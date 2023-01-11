@@ -24,6 +24,7 @@ function Row({ title, fetchURL, isLargeRow }) {
   // console.log(movies)
 
   const mappedMovies = movies.map(movie => (
+    
     <img
       key={movie.id}
       onClick={() => handleClick(movie)}
