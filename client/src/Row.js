@@ -60,7 +60,7 @@ function Row({ title, fetchURL, isLargeRow }) {
 
   return (
     <div className="row">
-      <h2>{title}</h2>
+      <h4>{title}</h4>
       <div className="row-posters">
         {mappedMovies}
       </div>
