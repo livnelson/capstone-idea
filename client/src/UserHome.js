@@ -4,18 +4,9 @@ import './App.css'
 import Row from './Row'
 import Banner from './Banner'
 import Nav from './Nav'
-import { useParams } from 'react-router-dom'
-
 
 
 function UserHome({ user }) {
-// debugger
-
-const {id} = useParams()
-
-  if (!user) {
-    return <p>Loading...</p>
-  }
 
   return (
     <div className='app'>

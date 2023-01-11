@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './Login.css'
 
 function Login({ setIsLoggedIn, navigate }) {
@@ -11,7 +11,7 @@ function Login({ setIsLoggedIn, navigate }) {
   })
 
   const { username, password } = formData
-  const {id} = useParams()
+
 
   function onSubmit(e) {
     e.preventDefault()
