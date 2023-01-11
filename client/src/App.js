@@ -21,7 +21,7 @@ function App() {
     <div>
       <Routes>
         <Route exact path="/" element={<Login setIsLoggedIn={setIsLoggedIn} navigate={navigate} />} />
-        <Route exact path='/UserHome' element={<UserHome user={user} />} />
+        <Route exact path='/UserHome' element={<UserHome user={user} />} isLoggedIn={isLoggedIn} />
       </Routes>
     </div>
   );

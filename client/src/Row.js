@@ -24,7 +24,6 @@ function Row({ title, fetchURL, isLargeRow }) {
   // console.log(movies)
 
   const mappedMovies = movies.map(movie => (
-    
     <img
       key={movie.id}
       onClick={() => handleClick(movie)}
@@ -32,9 +31,10 @@ function Row({ title, fetchURL, isLargeRow }) {
       src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
       alt={movie.name} />
   ))
-
+  
+  // https://www.npmjs.com/package/react-youtube
   // https://www.npmjs.com/package/movie-trailer
-  //https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams
+  // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams
   const handleClick = (movie) => {
     if (trailerURL) {
       setTrailerURL('')
@@ -65,7 +65,7 @@ function Row({ title, fetchURL, isLargeRow }) {
       <div className="row-posters">
         {mappedMovies}
       </div>
-      {trailerURL && <YouTube className='youtube-video' ideoId={trailerURL} options={options} />}
+      {trailerURL && <YouTube className='youtube-video' videoId={trailerURL} options={options} />}
     </div>
   )
 }
