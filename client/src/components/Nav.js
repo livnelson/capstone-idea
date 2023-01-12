@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import Logout from './Logout'
-import './Nav.css'
+import NavMenu from './NavMenu'
+import '../styles/Nav.css'
 
 
-function Nav() {
+function Nav({ user }) {
   const [show, handleShow] = useState(false)
+  const [viewMenu, setViewMenu] = useState(true)
+
+
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -17,6 +20,11 @@ function Nav() {
     // }
   }, [])
 
+  function toggleViewUser() {
+    setViewMenu(!viewMenu)
+    console.log(user)
+  }
+
   return (
     <div className={`nav ${show && 'nav-black'}`} >
       <img
@@ -25,13 +33,11 @@ function Nav() {
         alt='MYFLIX-LOGO'
       />
       <div className='logout-button'>
-      <Logout />
       </div>
-      <img
-        className='nav-avatar'
-        src='https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png?20201013161117'
-        alt='Name'
-      />
+      <div className='nav-avatar' onClick={toggleViewUser}>
+      <img src={user.avatar} alt={user.first_name} className='nav-avatar'/>
+      </div>
+      {viewMenu ? null : <NavMenu user={user} />}
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import axios from './axios'
-import './Row.css'
+import axios from '../axios'
+import '../styles/Row.css'
 import YouTube from 'react-youtube'
 import movieTrailer from "movie-trailer"
 
@@ -21,14 +21,15 @@ function Row({ title, fetchURL, isLargeRow }) {
     fetchData()
   }, [fetchURL]);
 
-  // console.log(movies)
+  console.log(movies)
 
   const mappedMovies = movies.map(movie => (
     <img
       key={movie.id}
       onClick={() => handleClick(movie)}
       className={`row-poster ${isLargeRow && 'row-poster-large'}`}
-      src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
+      // src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
+      src={`${base_url}${movie.poster_path}`}
       alt={movie.name} />
   ))
   
@@ -43,7 +44,7 @@ function Row({ title, fetchURL, isLargeRow }) {
         .then((url) => {
           console.log("url is " + url);
           const urlParams = new URLSearchParams(new URL(url).search);
-          console.log("urlParamsn" + urlParams);
+          console.log("urlParams" + urlParams);
           setTrailerURL(urlParams.get("v"));
         })
         .catch((error) => console.log(error));
@@ -65,7 +66,7 @@ function Row({ title, fetchURL, isLargeRow }) {
       <div className="row-posters">
         {mappedMovies}
       </div>
-      {trailerURL && <YouTube className='youtube-video' videoId={trailerURL} options={options} />}
+      {trailerURL && <YouTube style={{}} className='youtube-video' videoId={trailerURL} options={options} />}
     </div>
   )
 }

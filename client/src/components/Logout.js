@@ -19,7 +19,7 @@ function Logout({ user, setIsLoggedIn }) {
         to="/"
         onClick={handleLogout}
         className="logout-button"
-      > Log Out
+      > Sign out of Myflix
       </Link>
     </div>
   );

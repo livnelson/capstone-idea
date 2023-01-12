@@ -10,4 +10,11 @@ class UsersController < ApplicationController
     render json: user, status: :ok
   end
 
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+    head :no_content
+    "User successfully deleted"
+  end
+
 end

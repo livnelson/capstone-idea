@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import './Login.css'
+import '../styles/Login.css'
 
-function Login({ setIsLoggedIn, navigate }) {
-  const [user, setUser] = useState({})
+function Login({ setIsLoggedIn, navigate, setUser }) {
+  // const [user, setUser] = useState({})
   const [errors, setErrors] = useState([])
   const [formData, setFormData] = useState({
     username: '',
@@ -29,8 +29,8 @@ function Login({ setIsLoggedIn, navigate }) {
         if (res.ok) {
           res.json().then(user => {
             console.log(user)
-            setIsLoggedIn(true)
             setUser(user)
+            setIsLoggedIn(true)
             navigate(`/UserHome`)
           })
         } else {
@@ -84,7 +84,7 @@ function Login({ setIsLoggedIn, navigate }) {
             </form>
           </div>
           {errors ? <div className="errors">{errors}</div> : null}
-          <p className="sign-up-link"> New to Myflix? <Link to="/CreateUser"><strong>Sign up now.</strong></Link></p>
+          <p className="sign-up-link"> New to Myflix? <Link to="/SignUp"><strong>Sign up now.</strong></Link></p>
           <p className="login-disclaimer">This is a Netflix inspired clone  built to give viewers an example of my programming abilities and graphic design skills. This app includes all movie listings from Netflix and may include titles that are considered NSFW or inappropriate for underage viewers. Please consider your environment when viewing. Thanks and enjoy!  ~ Liv</p>
         </div>
       </div>

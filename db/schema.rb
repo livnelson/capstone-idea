@@ -16,21 +16,26 @@ ActiveRecord::Schema.define(version: 2023_01_11_035941) do
   enable_extension "plpgsql"
 
   create_table "movies", force: :cascade do |t|
-    t.string "title"
+    t.string "name"
     t.string "poster_path"
     t.string "backdrop_path"
+    t.string "release_date"
     t.string "overview"
+    t.integer "vote_average"
+    t.integer "vote_count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "my_lists", force: :cascade do |t|
-    t.string "title"
+    t.string "name"
     t.string "poster_path"
+    t.bigint "user_id"
     t.bigint "movie_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["movie_id"], name: "index_my_lists_on_movie_id"
+    t.index ["user_id"], name: "index_my_lists_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

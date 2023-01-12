@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Login from './Login'
 import UserHome from './UserHome'
+import UserProfile from './UserProfile'
+import SignUp from './SignUp'
 
 
 function App() {
@@ -20,8 +22,10 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route exact path="/" element={<Login setIsLoggedIn={setIsLoggedIn} navigate={navigate} />} />
+        <Route exact path="/" element={<Login setIsLoggedIn={setIsLoggedIn} setUser={setUser} navigate={navigate} />} />
         <Route exact path='/UserHome' element={<UserHome user={user} />} isLoggedIn={isLoggedIn} />
+        <Route exact path='/UserProfile' element={<UserProfile user={user} />} isLoggedIn={isLoggedIn} />
+        <Route exact path='/SignUp' element={<SignUp setUser={setUser} />} isLoggedIn={isLoggedIn} />
       </Routes>
     </div>
   );

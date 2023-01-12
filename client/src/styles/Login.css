@@ -7,7 +7,7 @@
 
 .login-logo {
   position: fixed;
-  justify-self: left ! important;
+  justify-content: flex-start;
   width: 140px ;
   padding-top: 20px;
   padding-left: 20px;

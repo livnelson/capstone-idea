@@ -1,17 +1,21 @@
-import React from 'react'
-import requests from './requests'
-import './App.css'
+import React, { useState } from 'react'
+import requests from '../requests'
+import '../styles/App.css'
 import Row from './Row'
 import Banner from './Banner'
 import Nav from './Nav'
+import UserProfile from './UserProfile'
 
 
 function UserHome({ user }) {
+  const [viewProfile, setViewProfile] = useState(false)
+
+  console.log(user)
 
   return (
     <div className='app'>
-      <Nav />
-      <Banner />
+      <Nav user={user}/>
+      <Banner user={user}/>
       <Row
         title="Myflix {Netflix}  Originals"
         fetchURL={requests.fetchNetflixOriginals}
