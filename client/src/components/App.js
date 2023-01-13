@@ -24,7 +24,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Login setIsLoggedIn={setIsLoggedIn} setUser={setUser} navigate={navigate} />} />
         <Route exact path='/UserHome' element={<UserHome user={user} />} isLoggedIn={isLoggedIn} />
-        <Route exact path='/UserProfile' element={<UserProfile user={user} />} isLoggedIn={isLoggedIn} />
+        <Route exact path='/UserProfile' element={<UserProfile user={user} setUser={setUser} />} isLoggedIn={isLoggedIn} />
         <Route exact path='/SignUp' element={<SignUp setUser={setUser} />} isLoggedIn={isLoggedIn} />
       </Routes>
     </div>

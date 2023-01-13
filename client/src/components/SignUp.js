@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect  } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import Avatar from './Avatar'
+import '../styles/SignUp.css'
 
-function CreateUser({ setuser }) {
+function CreateUser({ setUser }) {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [avatar, setAvatar] = useState("");
+  const [avatars, setAvatars] = useState([]);
 
   const navigate = useNavigate();
 
@@ -40,7 +43,7 @@ function CreateUser({ setuser }) {
       last_name: lastName,
       username,
       password,
-      avatar
+      profile_img: avatar
     };
     console.log(userObj);
 
@@ -55,19 +58,35 @@ function CreateUser({ setuser }) {
     fetch("/create", configObject)
       .then((r) => r.json())
       .then((user) => {
-        setFirstName("");
-        setLastName("");
-        setUsername("");
-        setPassword("");
-        setAvatar("");
+        setFirstName("")
+        setLastName("")
+        setUsername("")
+        setPassword("")
+        setAvatar("")
+        setUser(user)
         navigate(`/UserHome`)
       });
   }
 
+  useEffect(() => {
+    fetch ('/avatars')
+    .then((res) => res.json())
+    .then((avatarArray) => {
+      console.log(avatarArray)
+      setAvatars(avatarArray)
+    })
+  },[])
+
+  const mappedAvatars = avatars.map((avatar) => {
+    return <Avatar key={avatar.id} id={avatar.id} name={avatar.name} img_url={avatar.img_url} />
+  })
+  
   return (
     <div>
-      <div className="new-user-card">
-        <div className="create-user-form">
+      <div className="signup-card">
+      <Link to="/"  className="back-link">← Back to Log In</Link>
+      <h1 className='greeting'>Welcome to Myflix!</h1>
+        <div className="signup-form">
           <form onSubmit={handleSubmit}>
             <input
               className="input-field"
@@ -118,10 +137,10 @@ function CreateUser({ setuser }) {
               required
             />
             <br />
+            <div className="avatars">{mappedAvatars}</div>
             <button className="button" type="submit">Sign Up Now</button>
           </form>
         </div>
-          <p className="back-link"><Link to="/">← Back to Log In</Link></p>
       </div>
     </div>
   )

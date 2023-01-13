@@ -12,9 +12,7 @@ function VideoDetails({ movie, user, viewDetails, setViewDetails }) {
 
   function toggleLike() {
     setLike(!like)
-
   }
-
 
   const handleAddToList = () => {
     console.log("Added to list...");
@@ -44,10 +42,6 @@ function VideoDetails({ movie, user, viewDetails, setViewDetails }) {
 
 
 
-
-  // function toggleAddToList() {
-  //   setAddToList(!addToList)
-  // }
 
   return (
     <div className='modal'>

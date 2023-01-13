@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
+  resources :user_avatars
   # Routing logic: fallback requests for React Router.
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
-
+  
   resources :users, only: [:index, :show, :create, :update, :destroy]
   resources :my_lists, only: [:create, :update, :destroy]
-  resources :movies
+  resources :avatars, only: [:index, :show]
   
   get "/me", to: "users#show"
 
@@ -14,6 +15,9 @@ Rails.application.routes.draw do
 
   patch "/mylist", to: "my_lists#create"
 
-  delete '/deleteprofile', to: "users#destroy"
+  patch "/updateuser/:id", to: "users#update"
+  delete "/deleteprofile", to: "users#destroy"
+
+  get "/avatars", to: "avatars#index"
   
 end

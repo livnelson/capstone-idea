@@ -4,11 +4,8 @@ import '../styles/App.css'
 import Row from './Row'
 import Banner from './Banner'
 import Nav from './Nav'
-import UserProfile from './UserProfile'
-
 
 function UserHome({ user }) {
-  const [viewProfile, setViewProfile] = useState(false)
 
   console.log(user)
 
